@@ -1,0 +1,1 @@
+export type CreateOProgress = () => void
