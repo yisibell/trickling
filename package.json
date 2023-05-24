@@ -6,13 +6,14 @@
     "email": "yisiwings@163.com",
     "name": "elenh"
   },
-  "main": "lib/oprogress.cjs.js",
-  "module": "lib/oprogress.esm.js",
+  "type": "module",
+  "main": "lib/oprogress.umd.cjs",
+  "module": "lib/oprogress.js",
   "types": "lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/oprogress.esm.js",
-      "require": "./lib/oprogress.cjs.js",
+      "import": "./lib/oprogress.js",
+      "require": "./lib/oprogress.umd.cjs",
       "types": "./lib/index.d.ts"
     }
   },
