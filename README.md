@@ -1,3 +1,5 @@
+<p align="center">:construction: Developing... :construction:</p>
+
 # OProgress
 
 A progress bar for web. Featuring realistic trickle animations to convince your users that something is happening!
