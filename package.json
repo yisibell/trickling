@@ -1,19 +1,19 @@
 {
-  "name": "oprogress",
-  "version": "0.0.1-0",
+  "name": "trickling",
+  "version": "0.0.1",
   "description": "A progress bar for web. Featuring realistic trickle animations to convince your users that something is happening!",
   "author": {
     "email": "yisiwings@163.com",
     "name": "elenh"
   },
   "type": "module",
-  "main": "lib/oprogress.umd.cjs",
-  "module": "lib/oprogress.js",
+  "main": "lib/trickling.umd.cjs",
+  "module": "lib/trickling.js",
   "types": "lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/oprogress.js",
-      "require": "./lib/oprogress.umd.cjs",
+      "import": "./lib/trickling.js",
+      "require": "./lib/trickling.umd.cjs",
       "types": "./lib/index.d.ts"
     }
   },
@@ -26,9 +26,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yisibell/oprogress"
+    "url": "https://github.com/yisibell/trickling"
   },
-  "homepage": "https://github.com/yisibell/oprogress",
+  "homepage": "https://github.com/yisibell/trickling",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -38,7 +38,7 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "release": "npm run build:lib && changelogen --release && npm publish && git push --follow-tags",
+    "release": "npm run build:lib && changelogen --release && npm publish --access=public && git push --follow-tags",
     "build:app": "cross-env BUILD_TYPE=app vite build",
     "build:lib": "cross-env BUILD_TYPE=lib vite build"
   },
@@ -66,8 +66,5 @@
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
     "vue-tsc": "^1.2.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
