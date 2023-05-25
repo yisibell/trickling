@@ -1,6 +1,6 @@
 <p align="center">:construction: Developing... :construction:</p>
 
-# OProgress
+# Trickling
 
 A progress bar for web. Featuring realistic trickle animations to convince your users that something is happening!
 
@@ -12,22 +12,27 @@ A progress bar for web. Featuring realistic trickle animations to convince your 
 # Installation
 
 ```bash
-$ pnpm add oprogress
-$ yarn add oprogress
-$ npm i oprogress
+# pnpm
+$ pnpm add trickling
+
+# yarn
+$ yarn add trickling
+
+# npm
+$ npm i trickling
 ```
 
 # Usage
 
 ```ts
-import { createOProgress } from 'oprogress'
+import { createTrickling } from 'trickling'
 
-const oprogress = createOProgress()
+const trickling = createTrickling()
 
 // shows the progress bar
-oprogress.start()
+trickling.start()
 
 // completes the progress
-oprogress.done()
+trickling.done()
 ```
 

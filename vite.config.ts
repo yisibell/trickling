@@ -23,9 +23,9 @@ export default defineConfig({
         lib: {
           // Could also be a dictionary or array of multiple entry points
           entry: resolve(__dirname, 'src/lib/main.ts'),
-          name: 'OProgress',
+          name: 'Trickling',
           // the proper extensions will be added
-          fileName: 'oprogress',
+          fileName: 'trickling',
         },
         rollupOptions: {
           external: [],
