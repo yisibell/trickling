@@ -1,0 +1,74 @@
+$trickling-color: #29d !default;
+$trickling-height: 2px !default;
+$trickling-spinner-opacity: 1 !default;
+$trickling-spinner-size: 18px !default;
+$trickling-spinner-stroke-width: 2px !default;
+
+#trickling {
+  // Make clicks pass-through
+  pointer-events: none;
+ 
+  .bar {
+    background: $trickling-color;
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $trickling-height;
+  }
+
+  // Glow effect
+  .peg {
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 10px $trickling-color, 0 0 5px $trickling-color;
+    opacity: 1;
+    transform: rotate(3deg) translate(0px, -4px);
+  }
+
+  // Spinner
+  .spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    top: 15px;
+    right: 15px;
+    opacity: $trickling-spinner-opacity;
+  }
+
+  .spinner-icon {
+    width: $trickling-spinner-size;
+    height: $trickling-spinner-size;
+    box-sizing: border-box;
+    border: solid $trickling-spinner-stroke-width transparent;
+    border-top-color: $trickling-color;
+    border-left-color: $trickling-color;
+    border-radius: 50%;
+    animation: trickling-spinner 400ms linear infinite;
+  }
+}
+
+.trickling-custom-parent {
+  overflow: hidden;
+  position: relative;
+
+  #trickling {
+    .spinner, .bar {
+      position: absolute;
+    }
+  }
+}
+
+@keyframes trickling-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

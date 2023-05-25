@@ -1,9 +1,4 @@
-import type { CreateOProgress } from './interfaces/core'
+import { Trickling, createTrickling } from './trickling'
+import './styles/main.scss'
 
-const version = '0.1.0'
-
-class OProgress {
-  version = version
-}
-
-export { OProgress, CreateOProgress }
+export { Trickling, createTrickling }
