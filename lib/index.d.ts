@@ -14,6 +14,12 @@ interface TricklingOptions {
   wrapperSelectorId?: string
 
   appendTo?: string | HTMLElement
+
+  color?: string
+  progressBarHeight?: string
+  spinnerOpacity?: number
+  spinnerSize?: string
+  spinnerStrokeWidth?: string
 }
 
 interface TricklingInstance {
@@ -27,7 +33,7 @@ interface TricklingInstance {
   options: Required<TricklingOptions>
   render: (fromStart?: boolean) => HTMLElement
   start: () => TricklingInstance
-  set: (n: number) => TricklingInstance
+  set: (barStatus: number) => TricklingInstance
   inc: (amount?: number) => TricklingInstance
   trickle: () => TricklingInstance
   done: (force?: boolean) => TricklingInstance
@@ -35,11 +41,14 @@ interface TricklingInstance {
   isRendered: () => boolean
   isStarted: () => boolean
   barPositionCSS: (
-    n: number,
+    barStatus: number,
     speed: number,
     ease: string
   ) => Record<string, string>
   getPositioningCSS: () => 'translate3d' | 'translate' | 'margin'
+  setPercent: (value: number | null) => void
+  getPercent: () => number | null
+  setStyleVars: (target: HTMLElement) => void
 }
 
 type CreateTrickling = (opts?: TricklingOptions) => TricklingInstance
