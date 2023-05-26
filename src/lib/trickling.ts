@@ -44,6 +44,7 @@ class Trickling implements TricklingInstance {
 
   constructor(opts?: TricklingOptions) {
     this.options = Object.assign(this.options, opts)
+    this.setPercent(null)
   }
 
   setStyleVars(target: HTMLElement) {

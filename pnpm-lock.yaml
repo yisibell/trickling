@@ -49,6 +49,9 @@ devDependencies:
   prettier:
     specifier: ^2.8.4
     version: 2.8.4
+  prismjs:
+    specifier: ^1.29.0
+    version: 1.29.0
   rollup:
     specifier: ^3.23.0
     version: 3.23.0
@@ -58,6 +61,9 @@ devDependencies:
   sass:
     specifier: ^1.62.1
     version: 1.62.1
+  trickling:
+    specifier: ^0.4.0
+    version: 0.4.0
   typescript:
     specifier: ~4.8.4
     version: 4.8.4
@@ -3541,6 +3547,11 @@ packages:
       react-is: 17.0.2
     dev: true
 
+  /prismjs@1.29.0:
+    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
+    engines: {node: '>=6'}
+    dev: true
+
   /proto-list@1.2.4:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
     dev: true
@@ -4105,6 +4116,10 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       punycode: 2.3.0
+    dev: true
+
+  /trickling@0.4.0:
+    resolution: {integrity: sha512-xC2ISKDH2Jif7OI3abWmOnc4xBvhksi3PXyZyNK5w7o0jRaN+F7NpN9ftaluJN1SzhpPv+/VuW3Jsz1uglvMUg==}
     dev: true
 
   /ts-node@10.9.1(@types/node@18.14.2)(typescript@4.8.4):
