@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.2.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.1.0...v1.2.0)
+
+
+### 🚀 Enhancements
+
+  - Update example ([12d04c1](https://github.com/yisibell/trickling/commit/12d04c1))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.1.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v0.4.1...v1.1.0)
