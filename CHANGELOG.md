@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.4.1
+
+[compare changes](https://github.com/yisibell/trickling/compare/v0.4.0...v0.4.1)
+
+
+### 🚀 Enhancements
+
+  - Add example ([93e064b](https://github.com/yisibell/trickling/commit/93e064b))
+
+### 🏡 Chore
+
+  - Sync dist ([7f0189f](https://github.com/yisibell/trickling/commit/7f0189f))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v0.4.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v0.3.0...v0.4.0)
