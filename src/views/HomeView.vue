@@ -17,12 +17,8 @@
 
       <div class="demo-content">
         <div class="demo-item">
-          <div class="demo-item__action">
-            <PlayIcon
-              font-size="18px"
-              fill="currentColor"
-              @click="handleStart"
-            />
+          <div class="demo-item__action" @click="handleStart">
+            <PlayIcon font-size="18px" fill="currentColor" />
           </div>
           <code class="language-js"> trickling.start() </code>
           <span class="gap-arrow">---></span>
@@ -30,8 +26,8 @@
         </div>
 
         <div class="demo-item">
-          <div class="demo-item__action">
-            <PlayIcon font-size="18px" fill="currentColor" @click="handleSet" />
+          <div class="demo-item__action" @click="handleSet">
+            <PlayIcon font-size="18px" fill="currentColor" />
           </div>
           <code class="language-js"> trickling.set(0.4) </code>
           <span class="gap-arrow">---></span>
@@ -39,8 +35,8 @@
         </div>
 
         <div class="demo-item">
-          <div class="demo-item__action">
-            <PlayIcon font-size="18px" fill="currentColor" @click="handleInc" />
+          <div class="demo-item__action" @click="handleInc">
+            <PlayIcon font-size="18px" fill="currentColor" />
           </div>
           <code class="language-js"> trickling.inc() </code>
           <span class="gap-arrow">---></span>
@@ -48,12 +44,8 @@
         </div>
 
         <div class="demo-item">
-          <div class="demo-item__action">
-            <PlayIcon
-              font-size="18px"
-              fill="currentColor"
-              @click="handleDone"
-            />
+          <div class="demo-item__action" @click="handleDone">
+            <PlayIcon font-size="18px" fill="currentColor" />
           </div>
           <code class="language-js"> trickling.done() </code>
           <span class="gap-arrow">---></span>
