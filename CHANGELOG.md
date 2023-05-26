@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.3.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.2.0...v1.3.0)
+
+
+### 🚀 Enhancements
+
+  - Use modern classList api and upgrade error report ([f439462](https://github.com/yisibell/trickling/commit/f439462))
+
+### 🏡 Chore
+
+  - **example:** Fix exmaple click trigger problem ([168b4d7](https://github.com/yisibell/trickling/commit/168b4d7))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.2.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.1.0...v1.2.0)
