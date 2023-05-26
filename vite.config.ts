@@ -12,6 +12,7 @@ const outDir = isBuildLib() ? 'lib' : 'dist'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/trickling/',
   plugins: [vue(), svg4VuePlugin()],
   resolve: {
     alias: {

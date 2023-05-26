@@ -68,36 +68,28 @@
 import 'prismjs'
 
 import { createTrickling } from '@/lib/main'
-import type { TricklingInstance } from '@/lib/interfaces/core'
-import { onMounted, ref } from 'vue'
 import PlayIcon from '@/icons/play.svg?component'
-
 import initDemoRaw from '@/demo/init?raw'
 
-const trickling = ref<TricklingInstance>()
+const trickling = createTrickling({
+  color: '#409EFF',
+})
 
 const handleStart = () => {
-  console.log(trickling.value)
-  trickling.value?.start()
+  trickling.start()
 }
 
 const handleSet = () => {
-  trickling.value?.set(0.4)
+  trickling.set(0.4)
 }
 
 const handleInc = () => {
-  trickling.value?.inc()
+  trickling.inc()
 }
 
 const handleDone = () => {
-  trickling.value?.done()
+  trickling.done()
 }
-
-onMounted(() => {
-  trickling.value = createTrickling({
-    color: 'red',
-  })
-})
 </script>
 
 <style lang="scss" scoped>
