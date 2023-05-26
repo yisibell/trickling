@@ -12,6 +12,8 @@
 
 A progress bar for web. Featuring realistic trickle animations to convince your users that something is happening!
 
+see [example](https://hongwenqing.com/trickling/) here.
+
 # Features
 
 - Progress bar style supports customization.
@@ -51,7 +53,7 @@ const trickling = createTrickling({
 // shows the progress bar
 trickling.start()
 
-// completes the progress
+// Then, completes the progress
 trickling.done()
 ```
 
