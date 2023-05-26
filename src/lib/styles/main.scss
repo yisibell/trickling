@@ -1,21 +1,20 @@
-$trickling-color: #29d !default;
-$trickling-height: 2px !default;
-$trickling-spinner-opacity: 1 !default;
-$trickling-spinner-size: 18px !default;
-$trickling-spinner-stroke-width: 2px !default;
-
 #trickling {
   // Make clicks pass-through
   pointer-events: none;
- 
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  
+  // progress bar
   .bar {
-    background: $trickling-color;
+    background: var(--trickling-color);
     position: fixed;
     z-index: 1031;
     top: 0;
     left: 0;
     width: 100%;
-    height: $trickling-height;
+    height: var(--trickling-progress-bar-height);
   }
 
   // Glow effect
@@ -25,7 +24,7 @@ $trickling-spinner-stroke-width: 2px !default;
     right: 0px;
     width: 100px;
     height: 100%;
-    box-shadow: 0 0 10px $trickling-color, 0 0 5px $trickling-color;
+    box-shadow: 0 0 10px var(--trickling-color), 0 0 5px var(--trickling-color);
     opacity: 1;
     transform: rotate(3deg) translate(0px, -4px);
   }
@@ -37,16 +36,16 @@ $trickling-spinner-stroke-width: 2px !default;
     z-index: 1031;
     top: 15px;
     right: 15px;
-    opacity: $trickling-spinner-opacity;
+    opacity: var(--trickling-spinner-opacity);
   }
 
   .spinner-icon {
-    width: $trickling-spinner-size;
-    height: $trickling-spinner-size;
+    width: var(--trickling-spinner-size);
+    height: var(--trickling-spinner-size);
     box-sizing: border-box;
-    border: solid $trickling-spinner-stroke-width transparent;
-    border-top-color: $trickling-color;
-    border-left-color: $trickling-color;
+    border: solid var(--trickling-spinner-stroke-width) transparent;
+    border-top-color: var(--trickling-color);
+    border-left-color: var(--trickling-color);
     border-radius: 50%;
     animation: trickling-spinner 400ms linear infinite;
   }

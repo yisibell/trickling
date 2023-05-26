@@ -64,9 +64,14 @@ trickling.done()
 | `speed` | `number` | `200` | Adjust animation settings using speed (in ms). |
 | `trickle` | `boolean` | `true` | Turn off the automatic incrementing behavior by setting this to `false`. |
 | `trickleSpeed` | `number` | `1000` | Adjust how often to trickle/increment (in ms). |
-| `showSpinner` | `boolean` | `true` | Turn off loading spinner by setting it to `false`. |
-| `appendTo` | `string`, `HTMLElement` | `body` | Specify this to change the parent container. |
-| `wrapperSelectorId` | `string` | `trickling` | Specify this to change the id selector of parent container. |
+| `showSpinner` | `boolean` | `true` | Turn off **loading spinner** by setting it to `false`. |
+| `appendTo` | `string`, `HTMLElement` | `body` | Specify this to change the **parent container**. |
+| `wrapperSelectorId` | `string` | `trickling` | Specify this to change the **id selector** of parent container. |
+| `color` | `string` | `#29d` | Specify this to change **color** of the progress bar and spinner. |
+| `progressBarHeight` | `string` | `2px` | Specify this to change **height** of the progress bar. |
+| `spinnerOpacity` | `number` | `1` | Specify this to change **opacity** of the loading spinner. |
+| `spinnerSize` | `string` | `18px` | Specify this to change **size** of the loading spinner. |
+| `spinnerStrokeWidth` | `string` | `2px` | Specify this to change **stroke width** of the loading spinner. |
 
 
 # Advanced usage

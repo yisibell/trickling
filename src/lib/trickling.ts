@@ -1,13 +1,7 @@
 import type { TricklingOptions, TricklingInstance } from './interfaces/core'
-import {
-  clamp,
-  toBarPerc,
-  css,
-  queue,
-  removeClass,
-  removeElement,
-  addClass,
-} from './utils'
+import { clamp, toBarPerc } from './utils'
+import { queue } from './queue'
+import { css, removeClass, removeElement, addClass } from './dom'
 
 class Trickling implements TricklingInstance {
   static instance?: Trickling
@@ -41,11 +35,25 @@ class Trickling implements TricklingInstance {
     showSpinner: true,
     trickleSpeed: 1000,
     trickle: true,
+    color: '#29d',
+    progressBarHeight: '2px',
+    spinnerOpacity: 1,
+    spinnerSize: '18px',
+    spinnerStrokeWidth: '2px',
   }
 
   constructor(opts?: TricklingOptions) {
     this.options = Object.assign(this.options, opts)
-    this.status = null
+  }
+
+  setStyleVars(target: HTMLElement) {
+    css(target, {
+      '--trickling-color': this.options.color,
+      '--trickling-progress-bar-height': this.options.progressBarHeight,
+      '--trickling-spinner-opacity': this.options.spinnerOpacity,
+      '--trickling-spinner-size': this.options.spinnerSize,
+      '--trickling-spinner-stroke-width': this.options.spinnerStrokeWidth,
+    })
   }
 
   render(fromStart?: boolean): HTMLElement {
@@ -62,8 +70,10 @@ class Trickling implements TricklingInstance {
 
     tricklingElement.innerHTML = this.template
 
+    this.setStyleVars(tricklingElement)
+
     const bar = tricklingElement.querySelector(this.barSelector) as HTMLElement
-    const perc = fromStart ? '-100' : toBarPerc(this.status || 0)
+    const perc = fromStart ? '-100' : toBarPerc(this.getPercent() || 0)
     const parentElement =
       typeof this.options.appendTo === 'string'
         ? (document.querySelector(this.options.appendTo) as HTMLElement)
@@ -90,12 +100,12 @@ class Trickling implements TricklingInstance {
     return tricklingElement
   }
 
-  set(n: number) {
+  set(barStatus: number) {
     const started = this.isStarted()
 
-    n = clamp(n, this.options.minimum, 1)
+    barStatus = clamp(barStatus, this.options.minimum, 1)
 
-    this.status = n === 1 ? null : n
+    this.setPercent(barStatus === 1 ? null : barStatus)
 
     const progress = this.render(!started)
     const bar = progress.querySelector(this.barSelector) as HTMLElement
@@ -110,9 +120,9 @@ class Trickling implements TricklingInstance {
         this.positionUsing = this.getPositioningCSS()
 
       // Add transition
-      css(bar, this.barPositionCSS(n, speed, ease))
+      css(bar, this.barPositionCSS(barStatus, speed, ease))
 
-      if (n === 1) {
+      if (barStatus === 1) {
         // Fade out
         css(progress, {
           transition: 'none',
@@ -140,30 +150,30 @@ class Trickling implements TricklingInstance {
   }
 
   inc(amount?: number) {
-    let n = this.status
+    let currentStatus = this.getPercent()
 
-    if (!n) {
+    if (!currentStatus) {
       return this.start()
-    } else if (n > 1) {
+    } else if (currentStatus > 1) {
       return this
     } else {
       if (typeof amount !== 'number') {
-        if (n >= 0 && n < 0.2) {
+        if (currentStatus >= 0 && currentStatus < 0.2) {
           amount = 0.1
-        } else if (n >= 0.2 && n < 0.5) {
+        } else if (currentStatus >= 0.2 && currentStatus < 0.5) {
           amount = 0.04
-        } else if (n >= 0.5 && n < 0.8) {
+        } else if (currentStatus >= 0.5 && currentStatus < 0.8) {
           amount = 0.02
-        } else if (n >= 0.8 && n < 0.99) {
+        } else if (currentStatus >= 0.8 && currentStatus < 0.99) {
           amount = 0.005
         } else {
           amount = 0
         }
       }
 
-      n = clamp(n + amount, 0, 0.994)
+      currentStatus = clamp(currentStatus + amount, 0, 0.994)
 
-      return this.set(n)
+      return this.set(currentStatus)
     }
   }
 
@@ -172,11 +182,11 @@ class Trickling implements TricklingInstance {
   }
 
   start() {
-    if (!this.status) this.set(0)
+    if (!this.getPercent()) this.set(0)
 
     const work = () => {
       setTimeout(() => {
-        if (!this.status) return
+        if (!this.getPercent()) return
         this.trickle()
         work()
       }, this.options.trickleSpeed)
@@ -188,9 +198,9 @@ class Trickling implements TricklingInstance {
   }
 
   done(force?: boolean) {
-    if (!force && !this.status) return this
+    if (!force && !this.getPercent()) return this
 
-    return this.inc(0.3 + 0.5 * Math.random())?.set(1)
+    return this.inc(0.3 + 0.5 * Math.random()).set(1)
   }
 
   remove() {
@@ -206,23 +216,31 @@ class Trickling implements TricklingInstance {
     progress && removeElement(progress)
   }
 
+  setPercent(value: number | null) {
+    this.status = value
+  }
+
+  getPercent() {
+    return this.status
+  }
+
   isRendered() {
     return !!document.getElementById(this.options.wrapperSelectorId)
   }
 
   isStarted() {
-    return typeof this.status === 'number'
+    return typeof this.getPercent() === 'number'
   }
 
-  barPositionCSS(n: number, speed: number, ease: string) {
+  barPositionCSS(barStatus: number, speed: number, ease: string) {
     let barCSS: Record<string, string> = {}
 
     if (this.positionUsing === 'translate3d') {
-      barCSS = { transform: `translate3d(${toBarPerc(n)}%,0,0)` }
+      barCSS = { transform: `translate3d(${toBarPerc(barStatus)}%,0,0)` }
     } else if (this.positionUsing === 'translate') {
-      barCSS = { transform: `translate(${toBarPerc(n)}%,0)` }
+      barCSS = { transform: `translate(${toBarPerc(barStatus)}%,0)` }
     } else {
-      barCSS = { 'margin-left': `${toBarPerc(n)}%` }
+      barCSS = { 'margin-left': `${toBarPerc(barStatus)}%` }
     }
 
     barCSS.transition = `all ${speed}ms ${ease} 0s`

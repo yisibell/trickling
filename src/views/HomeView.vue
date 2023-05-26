@@ -16,9 +16,19 @@
           font-size="26px"
           fill="currentColor"
           class="demo-item__action"
-          @click="handleInc"
+          @click="handleSet"
         />
         <span> sets a percentage </span>
+      </div>
+
+      <div class="demo-item">
+        <PlayIcon
+          font-size="26px"
+          fill="currentColor"
+          class="demo-item__action"
+          @click="handleInc"
+        />
+        <span> increments by a little </span>
       </div>
 
       <div class="demo-item">
@@ -46,8 +56,12 @@ const handleStart = () => {
   trickling.value?.start()
 }
 
+const handleSet = () => {
+  trickling.value?.set(0.4)
+}
+
 const handleInc = () => {
-  trickling.value?.inc(0.4)
+  trickling.value?.inc()
 }
 
 const handleDone = () => {
@@ -59,6 +73,7 @@ onMounted(() => {
     // trickleSpeed: 1000,
     // easing: 'ease',
     // showSpinner: false,
+    color: 'red',
   })
 })
 </script>
