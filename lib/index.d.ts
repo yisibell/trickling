@@ -1,4 +1,4 @@
-export interface TricklingOptions {
+interface TricklingOptions {
   speed?: number
   easing?: string
   minimum?: number
@@ -16,7 +16,7 @@ export interface TricklingOptions {
   appendTo?: string | HTMLElement
 }
 
-export interface TricklingInstance {
+interface TricklingInstance {
   template: string
   barSelector: string
   spinnerSelector: string
@@ -42,4 +42,8 @@ export interface TricklingInstance {
   getPositioningCSS: () => 'translate3d' | 'translate' | 'margin'
 }
 
-export type CreateTrickling = (opts?: TricklingOptions) => TricklingInstance
+type CreateTrickling = (opts?: TricklingOptions) => TricklingInstance
+
+declare const createTrickling: CreateTrickling
+
+export { TricklingInstance, TricklingOptions, createTrickling };

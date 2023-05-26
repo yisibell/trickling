@@ -35,11 +35,12 @@
 </template>
 
 <script lang="ts" setup>
-import { createTrickling, Trickling } from '@/lib/main'
+import { createTrickling } from '@/lib/main'
+import type { TricklingInstance } from '@/lib/interfaces/core'
 import { onMounted, ref } from 'vue'
 import PlayIcon from '@/icons/play.svg?component'
 
-const trickling = ref<Trickling>()
+const trickling = ref<TricklingInstance>()
 
 const handleStart = () => {
   trickling.value?.start()

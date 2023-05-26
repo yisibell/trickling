@@ -1,4 +1,4 @@
-import type { TricklingOptions } from './interfaces/core'
+import type { TricklingOptions, TricklingInstance } from './interfaces/core'
 import {
   clamp,
   toBarPerc,
@@ -9,8 +9,9 @@ import {
   addClass,
 } from './utils'
 
-class Trickling {
+class Trickling implements TricklingInstance {
   static instance?: Trickling
+  static progressOffsetWidth = 0
 
   template = `
     <div class="bar" role="bar">
@@ -28,8 +29,6 @@ class Trickling {
   customParentClassName = 'trickling-custom-parent'
 
   status: number | null = null
-
-  progressOffsetWidth = 0
 
   positionUsing = ''
 
@@ -103,7 +102,7 @@ class Trickling {
     const speed = this.options.speed
     const ease = this.options.easing
 
-    this.progressOffsetWidth = progress.offsetWidth /* Repaint */
+    Trickling.progressOffsetWidth = progress.offsetWidth /* Repaint */
 
     queue((next) => {
       // Set positionUsing if it hasn't already been set
@@ -120,7 +119,7 @@ class Trickling {
           opacity: 1,
         })
 
-        this.progressOffsetWidth = progress.offsetWidth /* Repaint */
+        Trickling.progressOffsetWidth = progress.offsetWidth /* Repaint */
 
         setTimeout(() => {
           css(progress, {
