@@ -33,54 +33,26 @@ export function css(
 /**
  * (Internal) Determines if an element or space separated list of class names
  * contains a class name.
- * @param {Node} element
- * @param {string} name
  */
-export function hasClass(element: HTMLElement | string, name: string) {
-  const list = typeof element == 'string' ? element : classList(element)
-  return list.indexOf(' ' + name + ' ') >= 0
+export function hasClass(element: HTMLElement, name: string) {
+  return element.classList.contains(name)
 }
 
 /**
  * (Internal) Adds a class to an element.
- * @param {Node} element
- * @param {string} name
  */
-export function addClass(element: HTMLElement, name: string) {
-  const oldList = classList(element)
-  const newList = oldList + name
+export function addClass(element: HTMLElement, name: string | string[]) {
+  const tokens = typeof name === 'string' ? [name] : name
 
-  if (hasClass(oldList, name)) return
-
-  // Trim the opening space.
-  element.className = newList.substring(1)
+  element.classList.add(...tokens)
 }
 
 /**
  * (Internal) Removes a class from an element.
  */
-export function removeClass(element: HTMLElement, name: string) {
-  const oldList = classList(element)
-
-  if (!hasClass(element, name)) return
-
-  // Replace the class name.
-  const newList = oldList.replace(' ' + name + ' ', ' ')
-
-  // Trim the opening and closing spaces.
-  element.className = newList.substring(1, newList.length - 1)
-}
-
-/**
- * (Internal) Gets a space separated list of the class names on the element.
- * The list is wrapped with a single space on each end to facilitate finding
- * matches within the list.
- */
-export function classList(element: HTMLElement) {
-  return (' ' + ((element && element.className) || '') + ' ').replace(
-    /\s+/gi,
-    ' '
-  )
+export function removeClass(element: HTMLElement, name: string | string[]) {
+  const tokens = typeof name === 'string' ? [name] : name
+  element.classList.remove(...tokens)
 }
 
 /**

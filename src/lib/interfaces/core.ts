@@ -49,6 +49,8 @@ export interface TricklingInstance {
   setPercent: (value: number | null) => void
   getPercent: () => number | null
   setStyleVars: (target: HTMLElement) => void
+  getAppendToElement: () => HTMLElement
+  getBarElement: (target: HTMLElement) => HTMLElement
 }
 
 export type CreateTrickling = (opts?: TricklingOptions) => TricklingInstance

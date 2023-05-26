@@ -73,12 +73,9 @@ class Trickling implements TricklingInstance {
 
     this.setStyleVars(tricklingElement)
 
-    const bar = tricklingElement.querySelector(this.barSelector) as HTMLElement
+    const bar = this.getBarElement(tricklingElement)
     const perc = fromStart ? '-100' : toBarPerc(this.getPercent() || 0)
-    const parentElement =
-      typeof this.options.appendTo === 'string'
-        ? (document.querySelector(this.options.appendTo) as HTMLElement)
-        : this.options.appendTo
+    const parentElement = this.getAppendToElement()
 
     css(bar, {
       transition: 'all 0 linear',
@@ -108,12 +105,12 @@ class Trickling implements TricklingInstance {
 
     this.setPercent(barStatus === 1 ? null : barStatus)
 
-    const progress = this.render(!started)
-    const bar = progress.querySelector(this.barSelector) as HTMLElement
+    const progressElement = this.render(!started)
+    const bar = this.getBarElement(progressElement)
     const speed = this.options.speed
     const ease = this.options.easing
 
-    Trickling.progressOffsetWidth = progress.offsetWidth /* Repaint */
+    Trickling.progressOffsetWidth = progressElement.offsetWidth /* Repaint */
 
     queue((next) => {
       // Set positionUsing if it hasn't already been set
@@ -125,15 +122,16 @@ class Trickling implements TricklingInstance {
 
       if (barStatus === 1) {
         // Fade out
-        css(progress, {
+        css(progressElement, {
           transition: 'none',
           opacity: 1,
         })
 
-        Trickling.progressOffsetWidth = progress.offsetWidth /* Repaint */
+        Trickling.progressOffsetWidth =
+          progressElement.offsetWidth /* Repaint */
 
         setTimeout(() => {
-          css(progress, {
+          css(progressElement, {
             transition: `all ${speed}ms linear`,
             opacity: 0,
           })
@@ -206,15 +204,34 @@ class Trickling implements TricklingInstance {
 
   remove() {
     removeClass(document.documentElement, this.busyFlagClassName)
-    const parent =
-      typeof this.options.appendTo === 'string'
-        ? document.querySelector(this.options.appendTo)
-        : this.options.appendTo
+    const parent = this.getAppendToElement()
 
     removeClass(parent as HTMLElement, this.customParentClassName)
 
     const progress = document.getElementById(this.options.wrapperSelectorId)
     progress && removeElement(progress)
+  }
+
+  getBarElement(target: HTMLElement) {
+    const el = target.querySelector(this.barSelector) as HTMLElement
+    if (!el) {
+      throw new Error(`[Trickling]: Can not find 'barSelector' element!`)
+    }
+
+    return el
+  }
+
+  getAppendToElement() {
+    const el =
+      typeof this.options.appendTo === 'string'
+        ? (document.querySelector(this.options.appendTo) as HTMLElement)
+        : this.options.appendTo
+
+    if (!el) {
+      throw new Error(`[Trickling]: Can not find 'options.appendTo' element!`)
+    }
+
+    return el
   }
 
   setPercent(value: number | null) {
