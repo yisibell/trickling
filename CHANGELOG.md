@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.1.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v0.4.1...v1.1.0)
+
+
+### 🚀 Enhancements
+
+  - A major version ([77719ad](https://github.com/yisibell/trickling/commit/77719ad))
+
+### 🏡 Chore
+
+  - **example:** Fix deploy config ([ed89353](https://github.com/yisibell/trickling/commit/ed89353))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v0.4.1
 
 [compare changes](https://github.com/yisibell/trickling/compare/v0.4.0...v0.4.1)
