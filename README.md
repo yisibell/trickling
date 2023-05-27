@@ -10,7 +10,7 @@
 
 # Trickling
 
-A progress bar for web. Featuring realistic trickle animations to convince your users that something is happening!
+A modern progress bar for web APP. Featuring realistic trickle animations to convince your users that something is happening!
 
 see [example](https://hongwenqing.com/trickling/) here.
 
