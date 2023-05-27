@@ -6,8 +6,9 @@
           Trickling <span class="demo-header__title--tag">(progress bar)</span>
         </h1>
         <p class="demo-header__sub-title">
-          A nanoscopic progress bar. Featuring realistic trickle animations to
-          convince your users that something is happening!
+          A modern nanoscopic progress bar for web APP. <br />
+          Featuring realistic trickle animations to convince your users that
+          something is happening!
         </p>
 
         <div class="demo-header__basic-usage">
@@ -88,7 +89,11 @@ const handleDone = () => {
 .home {
   display: flex;
   justify-content: center;
-  height: 100%;
+  max-width: 1000px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
 }
 
 .gap-arrow {
@@ -113,10 +118,11 @@ const handleDone = () => {
 
   &__sub-title {
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
       sans-serif;
     color: var(--text-color--secondary);
+    padding: 12px 200px;
   }
 
   &__basic-usage {
