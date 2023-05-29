@@ -50,6 +50,11 @@ const trickling = createTrickling({
   // ...
 })
 
+// Change options after creating a Tricking instance
+trickling.setOptions({
+  // ...
+})
+
 // shows the progress bar
 trickling.start()
 

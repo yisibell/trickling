@@ -22,16 +22,20 @@ export default defineConfig({
   build: isBuildLib()
     ? {
         outDir,
+        target: 'es2015',
         lib: {
           // Could also be a dictionary or array of multiple entry points
           entry: resolve(__dirname, 'src/lib/main.ts'),
           name: 'Trickling',
           // the proper extensions will be added
           fileName: 'trickling',
+          formats: ['es', 'cjs', 'umd'],
         },
-        rollupOptions: {
-          external: [],
-        },
+        // rollupOptions: {
+        //   external: [],
+        // },
+        copyPublicDir: false,
+        cssTarget: ['chrome35'],
       }
     : { outDir },
 })

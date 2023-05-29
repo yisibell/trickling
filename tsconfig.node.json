@@ -6,7 +6,8 @@
     "cypress.config.*",
     "playwright.config.*",
     "package.json",
-    "rollup.config.*"
+    "rollup.config.*",
+    "postcss.config.*"
   ],
   "compilerOptions": {
     "composite": true,
