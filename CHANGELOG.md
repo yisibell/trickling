@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.5.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.4.1...v1.5.0)
+
+
+### 🚀 Enhancements
+
+  - Update build ([a175d1a](https://github.com/yisibell/trickling/commit/a175d1a))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.4.1
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.4.0...v1.4.1)
