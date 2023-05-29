@@ -2,6 +2,7 @@ export interface TricklingOptions {
   speed?: number
   easing?: string
   minimum?: number
+  maximum?: number
   showSpinner?: boolean
 
   trickle?: boolean
@@ -11,9 +12,9 @@ export interface TricklingOptions {
    */
   trickleSpeed?: number
 
-  wrapperSelectorId?: string
-
   appendTo?: string | HTMLElement
+
+  customWrapperClassName?: string
 
   color?: string
   progressBarHeight?: string
@@ -23,14 +24,10 @@ export interface TricklingOptions {
 }
 
 export interface TricklingInstance {
-  template: string
-  barSelector: string
-  spinnerSelector: string
-  busyFlagClassName: string
-  customParentClassName: string
   status: number | null
   positionUsing: string
   options: Required<TricklingOptions>
+  setOptions(opts: TricklingOptions): TricklingInstance
   render: (fromStart?: boolean) => HTMLElement
   start: () => TricklingInstance
   set: (barStatus: number) => TricklingInstance
@@ -48,9 +45,10 @@ export interface TricklingInstance {
   getPositioningCSS: () => 'translate3d' | 'translate' | 'margin'
   setPercent: (value: number | null) => void
   getPercent: () => number | null
-  setStyleVars: (target: HTMLElement) => void
+  setCSSVars: (target: HTMLElement) => void
   getAppendToElement: () => HTMLElement
   getBarElement: (target: HTMLElement) => HTMLElement
+  getWrapperElement(): HTMLElement | null
 }
 
 export type CreateTrickling = (opts?: TricklingOptions) => TricklingInstance

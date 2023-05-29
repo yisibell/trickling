@@ -16,6 +16,66 @@
         </div>
       </div>
 
+      <div class="demo-options">
+        <div class="demo-options-item">
+          <label class="demo-options-item__label" for="">Color: </label>
+          <input
+            v-model="form.color"
+            class="demo-options-item__control"
+            type="color"
+            @change="handleOptionsChange"
+          />
+        </div>
+        <div class="demo-options-item">
+          <label class="demo-options-item__label" for="">
+            Progress bar height:
+          </label>
+          <input
+            v-model="form.progressBarHeight"
+            class="demo-options-item__control"
+            type="number"
+            :min="1"
+            @change="handleOptionsChange"
+          />
+        </div>
+        <div class="demo-options-item">
+          <label class="demo-options-item__label" for=""> Spinner size: </label>
+          <input
+            v-model="form.spinnerSize"
+            class="demo-options-item__control"
+            type="number"
+            :min="1"
+            @change="handleOptionsChange"
+          />
+        </div>
+        <div class="demo-options-item">
+          <label class="demo-options-item__label" for="">
+            Spinner stroke width:
+          </label>
+          <input
+            v-model="form.spinnerStrokeWidth"
+            class="demo-options-item__control"
+            type="number"
+            :min="1"
+            @change="handleOptionsChange"
+          />
+        </div>
+        <div class="demo-options-item">
+          <label class="demo-options-item__label" for="">
+            Spinner opacity:
+          </label>
+          <input
+            v-model="form.spinnerOpacity"
+            class="demo-options-item__control"
+            type="number"
+            :max="1"
+            :min="0"
+            :step="0.1"
+            @change="handleOptionsChange"
+          />
+        </div>
+      </div>
+
       <div class="demo-content">
         <div class="demo-item">
           <div class="demo-item__action" @click="handleStart">
@@ -60,13 +120,31 @@
 <script lang="ts" setup>
 import 'prismjs'
 
+import { ref } from 'vue'
+import type { TricklingOptions } from '@/lib/interfaces/core'
 import { createTrickling } from '@/lib/main'
 import PlayIcon from '@/icons/play.svg?component'
 import initDemoRaw from '@/demo/init?raw'
 
-const trickling = createTrickling({
-  color: '#409EFF',
+const trickling = createTrickling()
+
+const form = ref<TricklingOptions>({
+  color: '#29d',
+  progressBarHeight: '2',
+  spinnerOpacity: 1,
+  spinnerSize: '18',
+  spinnerStrokeWidth: '2',
 })
+
+const handleOptionsChange = () => {
+  trickling.setOptions({
+    color: form.value.color,
+    progressBarHeight: `${form.value.progressBarHeight}px`,
+    spinnerOpacity: form.value.spinnerOpacity,
+    spinnerSize: `${form.value.spinnerSize}px`,
+    spinnerStrokeWidth: `${form.value.spinnerStrokeWidth}px`,
+  })
+}
 
 const handleStart = () => {
   trickling.start()
@@ -85,6 +163,13 @@ const handleDone = () => {
 }
 </script>
 
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({
+  name: 'HomeView',
+})
+</script>
+
 <style lang="scss" scoped>
 .home {
   display: flex;
@@ -96,12 +181,31 @@ const handleDone = () => {
   font-weight: normal;
 }
 
-.gap-arrow {
-  padding: 0 12px;
+.demo-options {
+  padding: 16px 0;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.demo-options-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  padding: 12px 0;
+
+  &__label {
+    margin-right: 16px;
+    color: #909399;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+      'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
 }
 
 .demo-header {
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 
   &__title {
     text-align: center;
@@ -151,5 +255,9 @@ const handleDone = () => {
       color: #fff;
     }
   }
+}
+
+.gap-arrow {
+  padding: 0 12px;
 }
 </style>

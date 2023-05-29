@@ -56,6 +56,11 @@
   position: relative;
 
   #trickling {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    
     .spinner, .bar {
       position: absolute;
     }

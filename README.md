@@ -62,13 +62,14 @@ trickling.done()
 | Key | Type | Default value | Description |
 | :---: | :---: | :---: | :---: |
 | `minimum` | `number` | `0.08` | Changes the minimum percentage used upon starting. |
+| `maximum` | `number` | `0.994` | Changes the maximum percentage used upon ending. |
 | `easing` | `string` | `ease` | Adjust animation settings using easing (a CSS easing string). |
 | `speed` | `number` | `200` | Adjust animation settings using speed (in ms). |
 | `trickle` | `boolean` | `true` | Turn off the automatic incrementing behavior by setting this to `false`. |
 | `trickleSpeed` | `number` | `1000` | Adjust how often to trickle/increment (in ms). |
 | `showSpinner` | `boolean` | `true` | Turn off **loading spinner** by setting it to `false`. |
 | `appendTo` | `string`, `HTMLElement` | `body` | Specify this to change the **parent container**. |
-| `wrapperSelectorId` | `string` | `trickling` | Specify this to change the **id selector** of parent container. |
+| `customWrapperClassName` | `string` | `''` | Specify this to add a class name into the parent container. |
 | `color` | `string` | `#29d` | Specify this to change **color** of the progress bar and spinner. |
 | `progressBarHeight` | `string` | `2px` | Specify this to change **height** of the progress bar. |
 | `spinnerOpacity` | `number` | `1` | Specify this to change **opacity** of the loading spinner. |

@@ -2,25 +2,12 @@ import type { TricklingOptions, TricklingInstance } from './interfaces/core'
 import { clamp, toBarPerc } from './utils'
 import { queue } from './queue'
 import { css, removeClass, removeElement, addClass } from './dom'
+import { CONSTANTS } from './CONSTANTS'
+import { ERRORS } from './ERRORS'
 
 class Trickling implements TricklingInstance {
   static instance?: Trickling
   static progressOffsetWidth = 0
-
-  template = `
-    <div class="bar" role="bar">
-      <div class="peg"></div>
-    </div>
-    <div class="spinner" role="spinner">
-      <div class="spinner-icon"></div>
-    </div>`
-
-  barSelector = '[role="bar"]'
-  spinnerSelector = '[role="spinner"]'
-
-  busyFlagClassName = 'trickling-busy'
-
-  customParentClassName = 'trickling-custom-parent'
 
   status: number | null = null
 
@@ -28,10 +15,11 @@ class Trickling implements TricklingInstance {
 
   options: Required<TricklingOptions> = {
     speed: 200,
-    wrapperSelectorId: 'trickling',
-    appendTo: 'body',
-    minimum: 0.08,
     easing: 'ease',
+    appendTo: 'body',
+    customWrapperClassName: '',
+    minimum: 0.08,
+    maximum: 0.994,
     showSpinner: true,
     trickleSpeed: 1000,
     trickle: true,
@@ -47,7 +35,12 @@ class Trickling implements TricklingInstance {
     this.setPercent(null)
   }
 
-  setStyleVars(target: HTMLElement) {
+  setOptions(opts: TricklingOptions) {
+    this.options = Object.assign(this.options, opts)
+    return this
+  }
+
+  setCSSVars(target: HTMLElement) {
     css(target, {
       '--trickling-color': this.options.color,
       '--trickling-progress-bar-height': this.options.progressBarHeight,
@@ -57,21 +50,28 @@ class Trickling implements TricklingInstance {
     })
   }
 
-  render(fromStart?: boolean): HTMLElement {
-    if (this.isRendered())
-      return document.getElementById(
-        this.options.wrapperSelectorId
-      ) as HTMLElement
+  getWrapperElement() {
+    return document.getElementById(CONSTANTS.wrapperSelectorId)
+  }
 
-    addClass(document.documentElement, this.busyFlagClassName)
+  render(fromStart?: boolean): HTMLElement {
+    if (this.isRendered()) {
+      return this.getWrapperElement() as HTMLElement
+    }
+
+    addClass(document.documentElement, CONSTANTS.busyFlagClassName)
 
     const tricklingElement = document.createElement('div')
 
-    tricklingElement.id = this.options.wrapperSelectorId
+    tricklingElement.id = CONSTANTS.wrapperSelectorId
 
-    tricklingElement.innerHTML = this.template
+    tricklingElement.innerHTML = CONSTANTS.template
 
-    this.setStyleVars(tricklingElement)
+    if (this.options.customWrapperClassName) {
+      addClass(tricklingElement, this.options.customWrapperClassName)
+    }
+
+    this.setCSSVars(tricklingElement)
 
     const bar = this.getBarElement(tricklingElement)
     const perc = fromStart ? '-100' : toBarPerc(this.getPercent() || 0)
@@ -83,12 +83,12 @@ class Trickling implements TricklingInstance {
     })
 
     if (!this.options.showSpinner) {
-      const spinner = tricklingElement.querySelector(this.spinnerSelector)
+      const spinner = tricklingElement.querySelector(CONSTANTS.spinnerSelector)
       spinner && removeElement(spinner as HTMLElement)
     }
 
     if (parentElement != document.body) {
-      addClass(parentElement, this.customParentClassName)
+      addClass(parentElement, CONSTANTS.customParentClassName)
     }
 
     if (parentElement) {
@@ -170,7 +170,7 @@ class Trickling implements TricklingInstance {
         }
       }
 
-      currentStatus = clamp(currentStatus + amount, 0, 0.994)
+      currentStatus = clamp(currentStatus + amount, 0, this.options.maximum)
 
       return this.set(currentStatus)
     }
@@ -203,19 +203,19 @@ class Trickling implements TricklingInstance {
   }
 
   remove() {
-    removeClass(document.documentElement, this.busyFlagClassName)
+    removeClass(document.documentElement, CONSTANTS.busyFlagClassName)
     const parent = this.getAppendToElement()
 
-    removeClass(parent as HTMLElement, this.customParentClassName)
+    removeClass(parent as HTMLElement, CONSTANTS.customParentClassName)
 
-    const progress = document.getElementById(this.options.wrapperSelectorId)
+    const progress = this.getWrapperElement()
     progress && removeElement(progress)
   }
 
   getBarElement(target: HTMLElement) {
-    const el = target.querySelector(this.barSelector) as HTMLElement
+    const el = target.querySelector(CONSTANTS.barSelector) as HTMLElement
     if (!el) {
-      throw new Error(`[Trickling]: Can not find 'barSelector' element!`)
+      throw new Error(ERRORS.queryBarElementError)
     }
 
     return el
@@ -228,7 +228,7 @@ class Trickling implements TricklingInstance {
         : this.options.appendTo
 
     if (!el) {
-      throw new Error(`[Trickling]: Can not find 'options.appendTo' element!`)
+      throw new Error(ERRORS.queryAppendToElementError)
     }
 
     return el
@@ -243,7 +243,7 @@ class Trickling implements TricklingInstance {
   }
 
   isRendered() {
-    return !!document.getElementById(this.options.wrapperSelectorId)
+    return !!this.getWrapperElement()
   }
 
   isStarted() {
