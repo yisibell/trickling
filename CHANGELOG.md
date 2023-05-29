@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.4.1
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.4.0...v1.4.1)
+
+
+### 🩹 Fixes
+
+  - Style.css exports ([b812f70](https://github.com/yisibell/trickling/commit/b812f70))
+
+### 🏡 Chore
+
+  - Remove example favicon ([2c9d418](https://github.com/yisibell/trickling/commit/2c9d418))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.4.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.3.0...v1.4.0)
