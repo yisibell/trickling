@@ -1,6 +1,25 @@
 # Changelog
 
 
+## v1.4.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.3.0...v1.4.0)
+
+
+### 🚀 Enhancements
+
+  - Upgrade code and update example ([fa6ff58](https://github.com/yisibell/trickling/commit/fa6ff58))
+
+### 🏡 Chore
+
+  - **docs:** Update example ([7deb87d](https://github.com/yisibell/trickling/commit/7deb87d))
+  - **docs:** Update readme ([5b1d963](https://github.com/yisibell/trickling/commit/5b1d963))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+- Elenh ([@yisibell](http://github.com/yisibell))
+
 ## v1.3.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.2.0...v1.3.0)
