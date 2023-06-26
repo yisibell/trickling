@@ -21,6 +21,8 @@ interface TricklingOptions {
   spinnerOpacity?: number
   spinnerSize?: string
   spinnerStrokeWidth?: string
+
+  rtl?: boolean
 }
 
 interface TricklingInstance {
@@ -49,6 +51,7 @@ interface TricklingInstance {
   getAppendToElement: () => HTMLElement
   getBarElement: (target: HTMLElement) => HTMLElement
   getWrapperElement(): HTMLElement | null
+  getBarPercentage(barStatus: number): string
 }
 
 type CreateTrickling = (opts?: TricklingOptions) => TricklingInstance
