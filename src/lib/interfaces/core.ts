@@ -23,6 +23,8 @@ export interface TricklingOptions {
   spinnerStrokeWidth?: string
 
   rtl?: boolean
+
+  removeFromDOM?: boolean
 }
 
 export interface TricklingInstance {

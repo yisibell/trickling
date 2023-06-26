@@ -84,6 +84,18 @@
             @change="handleOptionsChange"
           />
         </div>
+
+        <div class="demo-options-item">
+          <label class="demo-options-item__label" for="">
+            Remove from DOM:
+          </label>
+          <input
+            v-model="form.removeFromDOM"
+            class="demo-options-item__control"
+            type="checkbox"
+            @change="handleOptionsChange"
+          />
+        </div>
       </div>
 
       <div class="demo-content">
@@ -143,6 +155,7 @@ const form = ref<TricklingOptions>({
   spinnerSize: '18',
   spinnerStrokeWidth: '2',
   rtl: false,
+  removeFromDOM: true,
 })
 
 const trickling = createTrickling()
@@ -155,6 +168,7 @@ const handleOptionsChange = () => {
     spinnerSize: `${form.value.spinnerSize}px`,
     spinnerStrokeWidth: `${form.value.spinnerStrokeWidth}px`,
     rtl: form.value.rtl,
+    removeFromDOM: form.value.removeFromDOM,
   })
 }
 

@@ -29,6 +29,7 @@ class Trickling implements TricklingInstance {
     spinnerSize: '18px',
     spinnerStrokeWidth: '2px',
     rtl: false,
+    removeFromDOM: true,
   }
 
   constructor(opts?: TricklingOptions) {
@@ -49,10 +50,6 @@ class Trickling implements TricklingInstance {
       '--trickling-spinner-size': this.options.spinnerSize,
       '--trickling-spinner-stroke-width': this.options.spinnerStrokeWidth,
     })
-  }
-
-  getWrapperElement() {
-    return document.getElementById(CONSTANTS.wrapperSelectorId)
   }
 
   render(fromStart?: boolean): HTMLElement {
@@ -106,6 +103,8 @@ class Trickling implements TricklingInstance {
   }
 
   set(barStatus: number) {
+    this.visible()
+
     const started = this.isStarted()
 
     barStatus = clamp(barStatus, this.options.minimum, 1)
@@ -188,6 +187,8 @@ class Trickling implements TricklingInstance {
   }
 
   start() {
+    this.visible()
+
     if (!this.getPercent()) this.set(0)
 
     const work = () => {
@@ -209,14 +210,39 @@ class Trickling implements TricklingInstance {
     return this.inc(0.3 + 0.5 * Math.random()).set(1)
   }
 
+  visible() {
+    if (this.isRendered() && !this.options.removeFromDOM) {
+      const el = this.getWrapperElement()
+
+      el && css(el, { visibility: 'visible', opacity: 1 })
+
+      this.setPercent(null)
+    }
+  }
+
+  hidden() {
+    const el = this.getWrapperElement()
+    el && css(el, { visibility: 'hidden' })
+  }
+
   remove() {
     removeClass(document.documentElement, CONSTANTS.busyFlagClassName)
-    const parent = this.getAppendToElement()
 
+    if (!this.options.removeFromDOM) {
+      // hide rather than remove from DOM, as this is super expensive in IE
+      this.hidden()
+      return
+    }
+
+    const parent = this.getAppendToElement()
     removeClass(parent as HTMLElement, CONSTANTS.customParentClassName)
 
     const progress = this.getWrapperElement()
     progress && removeElement(progress)
+  }
+
+  getWrapperElement() {
+    return document.getElementById(CONSTANTS.wrapperSelectorId)
   }
 
   getBarElement(target: HTMLElement) {
