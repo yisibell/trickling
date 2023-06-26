@@ -28,6 +28,7 @@ class Trickling implements TricklingInstance {
     spinnerOpacity: 1,
     spinnerSize: '18px',
     spinnerStrokeWidth: '2px',
+    zIndex: 1031,
     rtl: false,
     removeFromDOM: true,
   }
@@ -39,6 +40,7 @@ class Trickling implements TricklingInstance {
 
   setOptions(opts: TricklingOptions) {
     this.options = Object.assign(this.options, opts)
+
     return this
   }
 
@@ -49,6 +51,7 @@ class Trickling implements TricklingInstance {
       '--trickling-spinner-opacity': this.options.spinnerOpacity,
       '--trickling-spinner-size': this.options.spinnerSize,
       '--trickling-spinner-stroke-width': this.options.spinnerStrokeWidth,
+      '--trickling-progress-bar-z-index': this.options.zIndex,
     })
   }
 
@@ -102,10 +105,18 @@ class Trickling implements TricklingInstance {
     return tricklingElement
   }
 
-  set(barStatus: number) {
-    this.visible()
+  triggerRepaint() {
+    const el = this.getWrapperElement()
 
+    if (el) {
+      Trickling.progressOffsetWidth = el.offsetWidth /* Repaint */
+    }
+  }
+
+  set(barStatus: number) {
     const started = this.isStarted()
+
+    !started && this.visible()
 
     barStatus = clamp(barStatus, this.options.minimum, 1)
 
@@ -116,7 +127,7 @@ class Trickling implements TricklingInstance {
     const speed = this.options.speed
     const ease = this.options.easing
 
-    Trickling.progressOffsetWidth = progressElement.offsetWidth /* Repaint */
+    this.triggerRepaint()
 
     queue((next) => {
       // Set positionUsing if it hasn't already been set
@@ -133,8 +144,7 @@ class Trickling implements TricklingInstance {
           opacity: 1,
         })
 
-        Trickling.progressOffsetWidth =
-          progressElement.offsetWidth /* Repaint */
+        this.triggerRepaint()
 
         setTimeout(() => {
           css(progressElement, {
@@ -187,7 +197,7 @@ class Trickling implements TricklingInstance {
   }
 
   start() {
-    this.visible()
+    !this.isStarted() && this.visible()
 
     if (!this.getPercent()) this.set(0)
 
@@ -225,10 +235,10 @@ class Trickling implements TricklingInstance {
     el && css(el, { visibility: 'hidden' })
   }
 
-  remove() {
+  remove(force?: boolean) {
     removeClass(document.documentElement, CONSTANTS.busyFlagClassName)
 
-    if (!this.options.removeFromDOM) {
+    if (!this.options.removeFromDOM && !force) {
       // hide rather than remove from DOM, as this is super expensive in IE
       this.hidden()
       return

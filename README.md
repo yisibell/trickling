@@ -82,7 +82,8 @@ trickling.done()
 | `spinnerSize` | `string` | `18px` | Specify this to change **size** of the loading spinner. |
 | `spinnerStrokeWidth` | `string` | `2px` | Specify this to change **stroke width** of the loading spinner. |
 | `rtl` <br /> (Added in v1.6.0) | `boolean` | `false` | Change the progress direction to right-to-left. |
-| `removeFromDOM` <br /> (Added in v1.7.0) | `boolean` | `true` | Remove the component from the DOM when done, re-add when needed. This can have performance implications on complex apps in IE 11 as style calculations are slow. |
+| `removeFromDOM` <br /> (Added in v1.7.0) | `boolean` | `true` | Remove the component from the DOM when done, re-add when needed. This can have performance implications on complex apps in IE 11 as style calculations are slow. If set to `false`, just hidden the DOM when progress done. |
+| `zIndex` | `number/string` | `1031` | Specify this to change progress bar **z-index**. |
 
 
 # Advanced usage

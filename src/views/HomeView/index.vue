@@ -161,6 +161,9 @@ const form = ref<TricklingOptions>({
 const trickling = createTrickling()
 
 const handleOptionsChange = () => {
+  trickling.done()
+  trickling.remove(true)
+
   trickling.setOptions({
     color: form.value.color,
     progressBarHeight: `${form.value.progressBarHeight}px`,

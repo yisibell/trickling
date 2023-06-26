@@ -21,6 +21,7 @@ export interface TricklingOptions {
   spinnerOpacity?: number
   spinnerSize?: string
   spinnerStrokeWidth?: string
+  zIndex?: number | string
 
   rtl?: boolean
 
@@ -38,7 +39,7 @@ export interface TricklingInstance {
   inc: (amount?: number) => TricklingInstance
   trickle: () => TricklingInstance
   done: (force?: boolean) => TricklingInstance
-  remove: () => void
+  remove: (force?: boolean) => void
   isRendered: () => boolean
   isStarted: () => boolean
   barPositionCSS: (
@@ -54,6 +55,8 @@ export interface TricklingInstance {
   getBarElement: (target: HTMLElement) => HTMLElement
   getWrapperElement(): HTMLElement | null
   getBarPercentage(barStatus: number): string
+  visible(): void
+  hidden(): void
 }
 
 export type CreateTrickling = (opts?: TricklingOptions) => TricklingInstance

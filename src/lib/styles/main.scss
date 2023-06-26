@@ -10,7 +10,7 @@
   .trickling-progress-bar {
     background: var(--trickling-color);
     position: fixed;
-    z-index: 1031;
+    z-index: var(--trickling-progress-bar-z-index);
     top: 0;
     left: 0;
     width: 100%;
