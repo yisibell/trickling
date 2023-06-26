@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v1.6.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.5.0...v1.6.0)
+
+
+### 🚀 Enhancements
+
+  - Support right-to-left progress(for RTL languages) ([cfbabf4](https://github.com/yisibell/trickling/commit/cfbabf4))
+  - More specific class name to prevent clashes ([e4e4bdb](https://github.com/yisibell/trickling/commit/e4e4bdb))
+
+### 🏡 Chore
+
+  - **docs:** Update readme ([6a18ff2](https://github.com/yisibell/trickling/commit/6a18ff2))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.5.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.4.1...v1.5.0)
