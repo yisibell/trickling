@@ -5,9 +5,9 @@
   position: fixed;
   left: 0;
   top: 0;
-  
+
   // progress bar
-  .bar {
+  .trickling-progress-bar {
     background: var(--trickling-color);
     position: fixed;
     z-index: 1031;
@@ -18,7 +18,7 @@
   }
 
   // Glow effect
-  .peg {
+  .trickling-progress-peg {
     display: block;
     position: absolute;
     right: 0px;
@@ -30,7 +30,7 @@
   }
 
   &.rtl {
-    .peg {
+    .trickling-progress-peg {
       transform: rotate(-3deg) translate(0px, -4px);
       left: 0px;
       right: unset;
@@ -38,31 +38,31 @@
   }
 
   // Spinner
-  .spinner {
+  .trickling-progress-spinner {
     display: block;
     position: fixed;
     z-index: 1031;
     top: 15px;
     right: 15px;
     opacity: var(--trickling-spinner-opacity);
-  }
 
-  &.rtl {
-    .spinner {
-      right: unset;
-      left: 15px;
+    &__spinner-icon {
+      width: var(--trickling-spinner-size);
+      height: var(--trickling-spinner-size);
+      box-sizing: border-box;
+      border: solid var(--trickling-spinner-stroke-width) transparent;
+      border-top-color: var(--trickling-color);
+      border-left-color: var(--trickling-color);
+      border-radius: 50%;
+      animation: trickling-spinner 400ms linear infinite;
     }
   }
 
-  .spinner-icon {
-    width: var(--trickling-spinner-size);
-    height: var(--trickling-spinner-size);
-    box-sizing: border-box;
-    border: solid var(--trickling-spinner-stroke-width) transparent;
-    border-top-color: var(--trickling-color);
-    border-left-color: var(--trickling-color);
-    border-radius: 50%;
-    animation: trickling-spinner 400ms linear infinite;
+  &.rtl {
+    .trickling-progress-spinner {
+      right: unset;
+      left: 15px;
+    }
   }
 }
 
@@ -75,8 +75,9 @@
     position: absolute;
     left: 0;
     top: 0;
-    
-    .spinner, .bar {
+
+    .trickling-progress-spinner,
+    .trickling-progress-bar {
       position: absolute;
     }
   }

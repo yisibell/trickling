@@ -3,11 +3,11 @@ export enum CONSTANTS {
   customParentClassName = 'trickling-custom-parent',
   busyFlagClassName = 'trickling-busy',
   template = `
-  <div class="bar" role="bar">
-    <div class="peg"></div>
+  <div class="trickling-progress-bar" role="bar">
+    <div class="trickling-progress-peg"></div>
   </div>
-  <div class="spinner" role="spinner">
-    <div class="spinner-icon"></div>
+  <div class="trickling-progress-spinner" role="spinner">
+    <div class="trickling-progress-spinner__spinner-icon"></div>
   </div>`,
 
   barSelector = '[role="bar"]',
