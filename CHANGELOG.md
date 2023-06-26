@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.8.1
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.8.0...v1.8.1)
+
+
+### 🩹 Fixes
+
+  - Reset progress bar status to 0 when progress done in removeFromDOM config, to fix transition ([91f6f98](https://github.com/yisibell/trickling/commit/91f6f98))
+
+### 🏡 Chore
+
+  - Sync lib dir ([b352b0e](https://github.com/yisibell/trickling/commit/b352b0e))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.8.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.7.0...v1.8.0)
