@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.7.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.6.0...v1.7.0)
+
+
+### 🚀 Enhancements
+
+  - Support settings removeFormDOM to improve performance on IE 11 ([a3cfc0f](https://github.com/yisibell/trickling/commit/a3cfc0f))
+
+### 🏡 Chore
+
+  - Sync lib to repo ([fa24643](https://github.com/yisibell/trickling/commit/fa24643))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.6.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.5.0...v1.6.0)
