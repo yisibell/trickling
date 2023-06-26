@@ -29,6 +29,14 @@
     transform: rotate(3deg) translate(0px, -4px);
   }
 
+  &.rtl {
+    .peg {
+      transform: rotate(-3deg) translate(0px, -4px);
+      left: 0px;
+      right: unset;
+    }
+  }
+
   // Spinner
   .spinner {
     display: block;
@@ -37,6 +45,13 @@
     top: 15px;
     right: 15px;
     opacity: var(--trickling-spinner-opacity);
+  }
+
+  &.rtl {
+    .spinner {
+      right: unset;
+      left: 15px;
+    }
   }
 
   .spinner-icon {

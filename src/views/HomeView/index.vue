@@ -74,6 +74,16 @@
             @change="handleOptionsChange"
           />
         </div>
+
+        <div class="demo-options-item">
+          <label class="demo-options-item__label" for=""> RTL: </label>
+          <input
+            v-model="form.rtl"
+            class="demo-options-item__control"
+            type="checkbox"
+            @change="handleOptionsChange"
+          />
+        </div>
       </div>
 
       <div class="demo-content">
@@ -120,21 +130,22 @@
 <script lang="ts" setup>
 import 'prismjs'
 
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import type { TricklingOptions } from '@/lib/interfaces/core'
 import { createTrickling } from '@/lib/main'
 import PlayIcon from '@/icons/play.svg?component'
 import initDemoRaw from '@/demo/init?raw'
 
-const trickling = createTrickling()
-
 const form = ref<TricklingOptions>({
-  color: '#29d',
+  color: '#2299dd',
   progressBarHeight: '2',
   spinnerOpacity: 1,
   spinnerSize: '18',
   spinnerStrokeWidth: '2',
+  rtl: false,
 })
+
+const trickling = createTrickling()
 
 const handleOptionsChange = () => {
   trickling.setOptions({
@@ -143,6 +154,7 @@ const handleOptionsChange = () => {
     spinnerOpacity: form.value.spinnerOpacity,
     spinnerSize: `${form.value.spinnerSize}px`,
     spinnerStrokeWidth: `${form.value.spinnerStrokeWidth}px`,
+    rtl: form.value.rtl,
   })
 }
 
@@ -161,6 +173,10 @@ const handleInc = () => {
 const handleDone = () => {
   trickling.done()
 }
+
+onMounted(() => {
+  handleOptionsChange()
+})
 </script>
 
 <script lang="ts">

@@ -1,4 +1,4 @@
-export interface TricklingOptions {
+interface TricklingOptions {
   speed?: number
   easing?: string
   minimum?: number
@@ -21,11 +21,9 @@ export interface TricklingOptions {
   spinnerOpacity?: number
   spinnerSize?: string
   spinnerStrokeWidth?: string
-
-  rtl?: boolean
 }
 
-export interface TricklingInstance {
+interface TricklingInstance {
   status: number | null
   positionUsing: string
   options: Required<TricklingOptions>
@@ -51,7 +49,10 @@ export interface TricklingInstance {
   getAppendToElement: () => HTMLElement
   getBarElement: (target: HTMLElement) => HTMLElement
   getWrapperElement(): HTMLElement | null
-  getBarPercentage(barStatus: number): string
 }
 
-export type CreateTrickling = (opts?: TricklingOptions) => TricklingInstance
+type CreateTrickling = (opts?: TricklingOptions) => TricklingInstance
+
+declare const createTrickling: CreateTrickling
+
+export { TricklingInstance, TricklingOptions, createTrickling };

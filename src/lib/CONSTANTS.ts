@@ -12,4 +12,6 @@ export enum CONSTANTS {
 
   barSelector = '[role="bar"]',
   spinnerSelector = '[role="spinner"]',
+
+  rtlClassName = 'rtl',
 }

@@ -23,11 +23,12 @@ class Trickling implements TricklingInstance {
     showSpinner: true,
     trickleSpeed: 1000,
     trickle: true,
-    color: '#29d',
+    color: '#2299dd',
     progressBarHeight: '2px',
     spinnerOpacity: 1,
     spinnerSize: '18px',
     spinnerStrokeWidth: '2px',
+    rtl: false,
   }
 
   constructor(opts?: TricklingOptions) {
@@ -67,6 +68,10 @@ class Trickling implements TricklingInstance {
 
     tricklingElement.innerHTML = CONSTANTS.template
 
+    if (this.options.rtl) {
+      addClass(tricklingElement, CONSTANTS.rtlClassName)
+    }
+
     if (this.options.customWrapperClassName) {
       addClass(tricklingElement, this.options.customWrapperClassName)
     }
@@ -74,7 +79,9 @@ class Trickling implements TricklingInstance {
     this.setCSSVars(tricklingElement)
 
     const bar = this.getBarElement(tricklingElement)
-    const perc = fromStart ? '-100' : toBarPerc(this.getPercent() || 0)
+    const perc = fromStart
+      ? this.getBarPercentage(0)
+      : this.getBarPercentage(this.getPercent() || 0)
     const parentElement = this.getAppendToElement()
 
     css(bar, {
@@ -250,15 +257,23 @@ class Trickling implements TricklingInstance {
     return typeof this.getPercent() === 'number'
   }
 
+  getBarPercentage(barStatus: number) {
+    return toBarPerc(barStatus, this.options.rtl)
+  }
+
   barPositionCSS(barStatus: number, speed: number, ease: string) {
     let barCSS: Record<string, string> = {}
 
     if (this.positionUsing === 'translate3d') {
-      barCSS = { transform: `translate3d(${toBarPerc(barStatus)}%,0,0)` }
+      barCSS = {
+        transform: `translate3d(${this.getBarPercentage(barStatus)}%,0,0)`,
+      }
     } else if (this.positionUsing === 'translate') {
-      barCSS = { transform: `translate(${toBarPerc(barStatus)}%,0)` }
+      barCSS = {
+        transform: `translate(${this.getBarPercentage(barStatus)}%,0)`,
+      }
     } else {
-      barCSS = { 'margin-left': `${toBarPerc(barStatus)}%` }
+      barCSS = { 'margin-left': `${this.getBarPercentage(barStatus)}%` }
     }
 
     barCSS.transition = `all ${speed}ms ${ease} 0s`

@@ -17,6 +17,7 @@ see [example](https://hongwenqing.com/trickling/) here.
 # Features
 
 - Progress bar style supports customization.
+- Support RTL languages.
 - Support Typescript.
 
 # Installation
@@ -75,11 +76,12 @@ trickling.done()
 | `showSpinner` | `boolean` | `true` | Turn off **loading spinner** by setting it to `false`. |
 | `appendTo` | `string`, `HTMLElement` | `body` | Specify this to change the **parent container**. |
 | `customWrapperClassName` | `string` | `''` | Specify this to add a class name into the parent container. |
-| `color` | `string` | `#29d` | Specify this to change **color** of the progress bar and spinner. |
+| `color` | `string` | `#2299dd` | Specify this to change **color** of the progress bar and spinner. |
 | `progressBarHeight` | `string` | `2px` | Specify this to change **height** of the progress bar. |
 | `spinnerOpacity` | `number` | `1` | Specify this to change **opacity** of the loading spinner. |
 | `spinnerSize` | `string` | `18px` | Specify this to change **size** of the loading spinner. |
 | `spinnerStrokeWidth` | `string` | `2px` | Specify this to change **stroke width** of the loading spinner. |
+| `rtl` | `boolean` | `false` | Change the progress direction to right-to-left. |
 
 
 # Advanced usage
