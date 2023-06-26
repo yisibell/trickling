@@ -245,6 +245,7 @@ export default defineComponent({
     font-size: 48px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: var(--text-color-primary);
+    font-weight: bold;
 
     &--tag {
       font-size: 22px;
