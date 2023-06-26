@@ -1,6 +1,21 @@
 # Changelog
 
 
+## v1.8.2
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.8.1...v1.8.2)
+
+
+### 🏡 Chore
+
+  - Sync lib dir ([6590632](https://github.com/yisibell/trickling/commit/6590632))
+  - **example:** Update example style ([372c307](https://github.com/yisibell/trickling/commit/372c307))
+  - **docs:** Update docs and example ([4be43cb](https://github.com/yisibell/trickling/commit/4be43cb))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.8.1
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.8.0...v1.8.1)
