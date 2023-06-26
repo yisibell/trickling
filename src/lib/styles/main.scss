@@ -5,6 +5,7 @@
   position: fixed;
   left: 0;
   top: 0;
+  z-index: var(--trickling-progress-bar-z-index);
 
   // progress bar
   .trickling-progress-bar {
@@ -41,7 +42,7 @@
   .trickling-progress-spinner {
     display: block;
     position: fixed;
-    z-index: 1031;
+    z-index: var(--trickling-progress-bar-z-index);
     top: 15px;
     right: 15px;
     opacity: var(--trickling-spinner-opacity);

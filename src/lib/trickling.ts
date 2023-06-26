@@ -79,15 +79,9 @@ class Trickling implements TricklingInstance {
     this.setCSSVars(tricklingElement)
 
     const bar = this.getBarElement(tricklingElement)
-    const perc = fromStart
-      ? this.getBarPercentage(0)
-      : this.getBarPercentage(this.getPercent() || 0)
     const parentElement = this.getAppendToElement()
 
-    css(bar, {
-      transition: 'all 0 linear',
-      transform: `translate3d(${perc}%, 0, 0)`,
-    })
+    this.translateProgressBar(bar, fromStart)
 
     if (!this.options.showSpinner) {
       const spinner = tricklingElement.querySelector(CONSTANTS.spinnerSelector)
@@ -220,11 +214,22 @@ class Trickling implements TricklingInstance {
     return this.inc(0.3 + 0.5 * Math.random()).set(1)
   }
 
+  translateProgressBar(barEl: HTMLElement, fromStart?: boolean) {
+    const perc = fromStart
+      ? this.getBarPercentage(0)
+      : this.getBarPercentage(this.getPercent() || 0)
+
+    css(barEl, {
+      transition: 'all 0 linear',
+      transform: `translate3d(${perc}%, 0, 0)`,
+    })
+  }
+
   visible() {
     if (this.isRendered() && !this.options.removeFromDOM) {
       const el = this.getWrapperElement()
 
-      el && css(el, { visibility: 'visible', opacity: 1 })
+      el && css(el, { display: 'block', opacity: 1 })
 
       this.setPercent(null)
     }
@@ -232,7 +237,11 @@ class Trickling implements TricklingInstance {
 
   hidden() {
     const el = this.getWrapperElement()
-    el && css(el, { visibility: 'hidden' })
+    if (el) {
+      css(el, { display: 'none' })
+      this.setPercent(null)
+      this.translateProgressBar(this.getBarElement(el), true)
+    }
   }
 
   remove(force?: boolean) {
