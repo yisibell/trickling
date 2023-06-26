@@ -57,6 +57,7 @@ interface TricklingInstance {
   getBarPercentage(barStatus: number): string
   visible(): void
   hidden(): void
+  translateProgressBar(barEl: HTMLElement, fromStart?: boolean): void
 }
 
 type CreateTrickling = (opts?: TricklingOptions) => TricklingInstance
