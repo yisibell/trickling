@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.8.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.7.0...v1.8.0)
+
+
+### 🚀 Enhancements
+
+  - Support define z-index of progress bar DOM ([fbdf175](https://github.com/yisibell/trickling/commit/fbdf175))
+
+### 🏡 Chore
+
+  - **docs:** Update readme ([6dba53e](https://github.com/yisibell/trickling/commit/6dba53e))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.7.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.6.0...v1.7.0)
