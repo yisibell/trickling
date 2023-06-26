@@ -16,9 +16,9 @@ see [example](https://hongwenqing.com/trickling/) here.
 
 # Features
 
-- Progress bar style supports customization.
-- Support RTL languages.
-- Support Typescript.
+- Support **programmatically** modify the style of the progress bar.
+- Support **RTL** languages.
+- Support **Typescript**.
 
 # Installation
 
@@ -46,21 +46,22 @@ import 'trickling/lib/style.css'
 ```ts
 import { createTrickling } from 'trickling'
 
-const trickling = createTrickling({
+// Create a Tricking progress instance
+const tricklingProgress = createTrickling({
   // Options
   // ...
 })
 
-// Change options after creating a Tricking instance
-trickling.setOptions({
+// Change options after creating a Tricking progress instance
+tricklingProgress.setOptions({
   // ...
 })
 
 // shows the progress bar
-trickling.start()
+tricklingProgress.start()
 
 // Then, completes the progress
-trickling.done()
+tricklingProgress.done()
 ```
 
 # Options
@@ -82,7 +83,7 @@ trickling.done()
 | `spinnerSize` | `string` | `18px` | Specify this to change **size** of the loading spinner. |
 | `spinnerStrokeWidth` | `string` | `2px` | Specify this to change **stroke width** of the loading spinner. |
 | `rtl` <br /> (Added in v1.6.0) | `boolean` | `false` | Change the progress direction to right-to-left. |
-| `removeFromDOM` <br /> (Added in v1.7.0) | `boolean` | `true` | Remove the component from the DOM when done, re-add when needed. This can have performance implications on complex apps in IE 11 as style calculations are slow. If set to `false`, just hidden the DOM when progress done via `display: none`. |
+| `removeFromDOM` <br /> (Added in v1.7.0) | `boolean` | `true` | Remove the component from the DOM when done, re-add when needed. This can have performance implications on complex apps in IE 11 as style calculations are slow. If set to `false`, just hidden the DOM via `display: none` when progress done. |
 | `zIndex` <br /> (Added in v1.8.0) | `number/string` | `1031` | Specify this to change progress bar **z-index**. |
 
 
