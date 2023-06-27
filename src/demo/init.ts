@@ -1,12 +1,12 @@
 import { createTrickling } from 'trickling'
 
-// Create a Tricking progress instance
+// Create a Trickling progress instance
 const tricklingProgress = createTrickling({
   /* options */
 })
 
-// Shows the Tricking progress bar
+// Shows the Trickling progress bar
 tricklingProgress.start()
 
-// Then, Completes the Tricking progress
+// Then, Completes the Trickling progress
 tricklingProgress.done()

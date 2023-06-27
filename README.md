@@ -41,26 +41,39 @@ $ npm i trickling
 import 'trickling/lib/style.css'
 ```
 
-2. Create a trickling progress instance.
+2. Create a trickling progress instance in a single file.
 
 ```ts
+// @/plugins/trickling-progress.ts
+
 import { createTrickling } from 'trickling'
 
-// Create a Tricking progress instance
+// Create a Trickling progress instance
 const tricklingProgress = createTrickling({
   // Options
   // ...
 })
 
-// Change options after creating a Tricking progress instance
+// You can also change options after creating a Trickling progress instance
 tricklingProgress.setOptions({
   // ...
 })
 
-// shows the progress bar
+// Export the instance
+export { tricklingProgress }
+```
+
+3. Using it where needed.
+
+```ts
+import { tricklingProgress } from '@/plugins/trickling-progress.ts'
+
+// ...
+// shows the Trickling progress bar
 tricklingProgress.start()
 
-// Then, completes the progress
+// ...
+// Then, completes the Trickling progress
 tricklingProgress.done()
 ```
 
