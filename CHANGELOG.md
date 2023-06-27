@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.8.3
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.8.2...v1.8.3)
+
+
+### 🏡 Chore
+
+  - **docs:** Update readme and example ([3e19926](https://github.com/yisibell/trickling/commit/3e19926))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.8.2
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.8.1...v1.8.2)
