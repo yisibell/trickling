@@ -30,7 +30,7 @@ class Trickling implements TricklingInstance {
     spinnerStrokeWidth: '2px',
     zIndex: 1031,
     rtl: false,
-    removeFromDOM: true,
+    removeFromDOMWhenDone: true,
   }
 
   constructor(opts?: TricklingOptions) {
@@ -226,7 +226,7 @@ class Trickling implements TricklingInstance {
   }
 
   visible() {
-    if (this.isRendered() && !this.options.removeFromDOM) {
+    if (this.isRendered() && !this.options.removeFromDOMWhenDone) {
       const el = this.getWrapperElement()
 
       el && css(el, { display: 'block', opacity: 1 })
@@ -247,7 +247,7 @@ class Trickling implements TricklingInstance {
   remove(force?: boolean) {
     removeClass(document.documentElement, CONSTANTS.busyFlagClassName)
 
-    if (!this.options.removeFromDOM && !force) {
+    if (!this.options.removeFromDOMWhenDone && !force) {
       // hide rather than remove from DOM, as this is super expensive in IE
       this.hidden()
       return

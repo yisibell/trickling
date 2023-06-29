@@ -87,10 +87,10 @@
 
         <div class="demo-options-item">
           <label class="demo-options-item__label" for="">
-            Remove from DOM:
+            Remove from DOM when progress done:
           </label>
           <input
-            v-model="form.removeFromDOM"
+            v-model="form.removeFromDOMWhenDone"
             class="demo-options-item__control"
             type="checkbox"
             @change="handleOptionsChange"
@@ -155,7 +155,7 @@ const form = ref<TricklingOptions>({
   spinnerSize: '18',
   spinnerStrokeWidth: '2',
   rtl: false,
-  removeFromDOM: true,
+  removeFromDOMWhenDone: true,
 })
 
 const trickling = createTrickling()
@@ -171,7 +171,7 @@ const handleOptionsChange = () => {
     spinnerSize: `${form.value.spinnerSize}px`,
     spinnerStrokeWidth: `${form.value.spinnerStrokeWidth}px`,
     rtl: form.value.rtl,
-    removeFromDOM: form.value.removeFromDOM,
+    removeFromDOMWhenDone: form.value.removeFromDOMWhenDone,
   })
 }
 

@@ -25,7 +25,7 @@ export interface TricklingOptions {
 
   rtl?: boolean
 
-  removeFromDOM?: boolean
+  removeFromDOMWhenDone?: boolean
 }
 
 export interface TricklingInstance {
