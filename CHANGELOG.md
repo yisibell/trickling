@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.9.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.8.3...v1.9.0)
+
+
+### 🚀 Enhancements
+
+  - Change removeFromDOM to removeFromDOMWhenDone ([27444d1](https://github.com/yisibell/trickling/commit/27444d1))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.8.3
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.8.2...v1.8.3)
