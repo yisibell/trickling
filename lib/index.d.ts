@@ -40,6 +40,7 @@ interface TricklingOptions {
   trickleIncrementalCurve?:
     | TrickleIncrementalCurveFunc
     | TrickleIncrementalCurveRecord[]
+    | number
 }
 
 interface TricklingInstance {
