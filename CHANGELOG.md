@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v1.11.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.10.0...v1.11.0)
+
+
+### 🚀 Enhancements
+
+  - TrickleIncrementalCurve function support returns a number ([a55a80e](https://github.com/yisibell/trickling/commit/a55a80e))
+
+### 🏡 Chore
+
+  - **docs:** Update readme ([9554527](https://github.com/yisibell/trickling/commit/9554527))
+  - **docs:** Update readme ([2570105](https://github.com/yisibell/trickling/commit/2570105))
+  - **docs:** Update readme ([599266e](https://github.com/yisibell/trickling/commit/599266e))
+  - **docs:** Update readme ([352b5b5](https://github.com/yisibell/trickling/commit/352b5b5))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.10.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.9.0...v1.10.0)
