@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.10.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.9.0...v1.10.0)
+
+
+### 🚀 Enhancements
+
+  - Support trickleIncrementalCurve option to configure the incremental curve of the trickle ([9e65890](https://github.com/yisibell/trickling/commit/9e65890))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.9.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.8.3...v1.9.0)
