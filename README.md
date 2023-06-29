@@ -98,14 +98,14 @@ tricklingProgress.done()
 | `rtl` <br /> (Added in v1.6.0) | `boolean` | `false` | Change the progress direction to right-to-left. |
 | `removeFromDOMWhenDone` <br /> (Added in v1.9.0) | `boolean` | `true` | Remove the component from the DOM when done, re-add when needed. This can have performance implications on complex apps as style calculations are slow. If set to `false`, just hidden the DOM via `display: none` when progress done. |
 | `zIndex` <br /> (Added in v1.8.0) | `number/string` | `1031` | Specify this to change progress bar **z-index**. |
-| [trickleIncrementalCurve](./README.md#trickle-incremental-curve) <br /> (Added in v1.10.0) | `(currentStatus: number) => TrickleIncrementalCurveRecord[]/TrickleIncrementalCurveRecord[]` | See [here](./README.md#trickle-incremental-curve) | You can use this option to configure the **incremental curve** of the trickle. |
+| [trickleIncrementalCurve](https://github.com/yisibell/trickling#trickle-incremental-curve) <br /> (Added in v1.10.0) | `(currentStatus: number) => TrickleIncrementalCurveRecord[]/TrickleIncrementalCurveRecord[]` | see below | You can use this option to configure the **incremental curve** of the trickle. |
 
 
-# trickleIncrementalCurve
+# Trickle Incremental Curve
 
 Using this configuration allows you to easily change the default trickle increasing curve. Thus, each Progress bar has different incremental performance.
 
-- Default value
+1. Default value
 
 ```ts
 [
@@ -116,14 +116,11 @@ Using this configuration allows you to easily change the default trickle increas
 ]
 ```
 
-1. **from**: This represents the starting range of the current progress status (including).
-2. **to**: This represents the end range of the current progress status (excluding).
-3. **value**: This represents the progress increment value of the current range.
+- **from**: This represents the starting range of the current progress status (including).
+- **to**: This represents the end range of the current progress status (excluding).
+- **value**: This represents the progress increment value of the current range.
 
-- Type definition
-
-see [here](./src/lib/interfaces/core.ts).
-
+2. Type definition see [here](./src/lib/interfaces/core.ts).
 
 # Advanced usage
 
