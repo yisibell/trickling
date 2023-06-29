@@ -116,9 +116,9 @@ Using this configuration allows you to easily change the default trickle increas
 ]
 ```
 
-**from**: This represents the starting range of the current progress status (including).
-**to**: This represents the end range of the current progress status (excluding).
-**value**: This represents the progress increment value of the current range.
+1. **from**: This represents the starting range of the current progress status (including).
+2. **to**: This represents the end range of the current progress status (excluding).
+3. **value**: This represents the progress increment value of the current range.
 
 - Type definition
 
