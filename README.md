@@ -122,6 +122,9 @@ Using this configuration allows you to easily change the default trickle increas
 
 2. Type definition see [here](./src/lib/interfaces/core.ts).
 
+- **Function**: If you use it as a function, should returns a `number` or `array`.
+- **Array**: Just set it via a `array`.
+
 # Advanced usage
 
 1. **Percentages**: To set a progress percentage, call `.set(n)`, where n is a number between `0..1`.

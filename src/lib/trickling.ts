@@ -178,17 +178,21 @@ class Trickling implements TricklingInstance {
             ? this.options.trickleIncrementalCurve(currentStatus)
             : this.options.trickleIncrementalCurve
 
-        const incCurveItem = incCurveList.find(
-          (v) =>
-            currentStatus !== null &&
-            currentStatus >= v.from &&
-            currentStatus < v.to
-        )
-
-        if (incCurveItem) {
-          amount = incCurveItem.value
+        if (typeof incCurveList === 'number') {
+          amount = incCurveList || 0
         } else {
-          amount = 0
+          const incCurveItem = incCurveList.find(
+            (v) =>
+              currentStatus !== null &&
+              currentStatus >= v.from &&
+              currentStatus < v.to
+          )
+
+          if (incCurveItem) {
+            amount = incCurveItem.value
+          } else {
+            amount = 0
+          }
         }
       }
 
