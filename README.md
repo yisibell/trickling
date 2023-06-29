@@ -98,12 +98,12 @@ tricklingProgress.done()
 | `rtl` <br /> (Added in v1.6.0) | `boolean` | `false` | Change the progress direction to right-to-left. |
 | `removeFromDOMWhenDone` <br /> (Added in v1.9.0) | `boolean` | `true` | Remove the component from the DOM when done, re-add when needed. This can have performance implications on complex apps as style calculations are slow. If set to `false`, just hidden the DOM via `display: none` when progress done. |
 | `zIndex` <br /> (Added in v1.8.0) | `number/string` | `1031` | Specify this to change progress bar **z-index**. |
-| [trickleIncrementalCurve](https://github.com/yisibell/trickling#trickle-incremental-curve) <br /> (Added in v1.10.0) | See below | See below | You can use this option to configure the **incremental curve** of the trickle. |
+| [trickleIncrementalCurve](https://github.com/yisibell/trickling#trickle-incremental-curve) <br /> (Added in v1.10.0) | `function/Array` | See below | You can use this option to configure the **incremental curve** of the trickle. |
 
 
 # Trickle Incremental Curve
 
-Using this configuration allows you to easily change the default trickle increasing curve. Thus, each Progress bar has different incremental performance.
+Using this configuration allows you to easily change the default trickle increasing curve. Thus, each Progress bar has different incremental expressions.
 
 1. Default value
 
