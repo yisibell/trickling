@@ -7,7 +7,7 @@ import { ERRORS } from './ERRORS'
 
 class Trickling implements TricklingInstance {
   static instance?: Trickling
-  static progressOffsetWidth = 0
+  progressOffsetWidth = 0
 
   status: number | null = null
 
@@ -31,6 +31,12 @@ class Trickling implements TricklingInstance {
     zIndex: 1031,
     rtl: false,
     removeFromDOMWhenDone: true,
+    trickleIncrementalCurve: [
+      { from: 0, to: 0.2, value: 0.1 },
+      { from: 0.2, to: 0.5, value: 0.04 },
+      { from: 0.5, to: 0.8, value: 0.02 },
+      { from: 0.8, to: 0.99, value: 0.005 },
+    ],
   }
 
   constructor(opts?: TricklingOptions) {
@@ -103,7 +109,7 @@ class Trickling implements TricklingInstance {
     const el = this.getWrapperElement()
 
     if (el) {
-      Trickling.progressOffsetWidth = el.offsetWidth /* Repaint */
+      this.progressOffsetWidth = el.offsetWidth /* Repaint */
     }
   }
 
@@ -167,14 +173,20 @@ class Trickling implements TricklingInstance {
       return this
     } else {
       if (typeof amount !== 'number') {
-        if (currentStatus >= 0 && currentStatus < 0.2) {
-          amount = 0.1
-        } else if (currentStatus >= 0.2 && currentStatus < 0.5) {
-          amount = 0.04
-        } else if (currentStatus >= 0.5 && currentStatus < 0.8) {
-          amount = 0.02
-        } else if (currentStatus >= 0.8 && currentStatus < 0.99) {
-          amount = 0.005
+        const incCurveList =
+          typeof this.options.trickleIncrementalCurve === 'function'
+            ? this.options.trickleIncrementalCurve(currentStatus)
+            : this.options.trickleIncrementalCurve
+
+        const incCurveItem = incCurveList.find(
+          (v) =>
+            currentStatus !== null &&
+            currentStatus >= v.from &&
+            currentStatus < v.to
+        )
+
+        if (incCurveItem) {
+          amount = incCurveItem.value
         } else {
           amount = 0
         }

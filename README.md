@@ -98,6 +98,31 @@ tricklingProgress.done()
 | `rtl` <br /> (Added in v1.6.0) | `boolean` | `false` | Change the progress direction to right-to-left. |
 | `removeFromDOMWhenDone` <br /> (Added in v1.9.0) | `boolean` | `true` | Remove the component from the DOM when done, re-add when needed. This can have performance implications on complex apps as style calculations are slow. If set to `false`, just hidden the DOM via `display: none` when progress done. |
 | `zIndex` <br /> (Added in v1.8.0) | `number/string` | `1031` | Specify this to change progress bar **z-index**. |
+| [trickleIncrementalCurve](./README.md#trickle-incremental-curve) <br /> (Added in v1.10.0) | `(currentStatus: number) => TrickleIncrementalCurveRecord[]/TrickleIncrementalCurveRecord[]` | See [here](./README.md#trickle-incremental-curve) | You can use this option to configure the **incremental curve** of the trickle. |
+
+
+# trickleIncrementalCurve
+
+Using this configuration allows you to easily change the default trickle increasing curve. Thus, each Progress bar has different incremental performance.
+
+- Default value
+
+```ts
+[
+  { from: 0, to: 0.2, value: 0.1 },
+  { from: 0.2, to: 0.5, value: 0.04 },
+  { from: 0.5, to: 0.8, value: 0.02 },
+  { from: 0.8, to: 0.99, value: 0.005 },
+]
+```
+
+**from**: This represents the starting range of the current progress status (including).
+**to**: This represents the end range of the current progress status (excluding).
+**value**: This represents the progress increment value of the current range.
+
+- Type definition
+
+see [here](./src/lib/interfaces/core.ts).
 
 
 # Advanced usage
@@ -105,9 +130,9 @@ tricklingProgress.done()
 1. **Percentages**: To set a progress percentage, call `.set(n)`, where n is a number between `0..1`.
 
 ```ts
-trickling.set(0.0);     // Sorta same as .start()
+trickling.set(0.0);     // Just same as .start()
 trickling.set(0.4);
-trickling.set(1.0);     // Sorta same as .done()
+trickling.set(1.0);     // Just same as .done()
 ```
 
 2. **Incrementing**: To increment the progress bar, just use `.inc()`. This increments it with a random amount. This will never get to `100%`: use it for every image load (or similar).

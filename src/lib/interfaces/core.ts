@@ -1,3 +1,13 @@
+export interface TrickleIncrementalCurveRecord {
+  from: number
+  to: number
+  value: number
+}
+
+export type TrickleIncrementalCurveFunc = (
+  currentStatus: number
+) => TrickleIncrementalCurveRecord[]
+
 export interface TricklingOptions {
   speed?: number
   easing?: string
@@ -26,11 +36,16 @@ export interface TricklingOptions {
   rtl?: boolean
 
   removeFromDOMWhenDone?: boolean
+
+  trickleIncrementalCurve?:
+    | TrickleIncrementalCurveFunc
+    | TrickleIncrementalCurveRecord[]
 }
 
 export interface TricklingInstance {
   status: number | null
   positionUsing: string
+  progressOffsetWidth: number
   options: Required<TricklingOptions>
   setOptions(opts: TricklingOptions): TricklingInstance
   render: (fromStart?: boolean) => HTMLElement
