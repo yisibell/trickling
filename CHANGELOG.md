@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.12.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.11.0...v1.12.0)
+
+
+### 🚀 Enhancements
+
+  - Extract `dom` into the `fourdom` package ([950bb93](https://github.com/yisibell/trickling/commit/950bb93))
+
+### 🏡 Chore
+
+  - Sync lib dir ([27acbc2](https://github.com/yisibell/trickling/commit/27acbc2))
+
+### ❤️  Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.11.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.10.0...v1.11.0)
