@@ -31,9 +31,9 @@ export default defineConfig({
           fileName: 'trickling',
           formats: ['es', 'cjs', 'umd'],
         },
-        // rollupOptions: {
-        //   external: [],
-        // },
+        rollupOptions: {
+          external: ['fourdom'],
+        },
         copyPublicDir: false,
         cssTarget: ['chrome35'],
       }

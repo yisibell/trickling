@@ -1,7 +1,7 @@
 import type { TricklingOptions, TricklingInstance } from './interfaces/core'
 import { clamp, toBarPerc } from './utils'
 import { queue } from './queue'
-import { css, removeClass, removeElement, addClass } from './dom'
+import { css, removeClass, removeElement, addClass } from 'fourdom'
 import { CONSTANTS } from './CONSTANTS'
 import { ERRORS } from './ERRORS'
 
