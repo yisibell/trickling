@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.13.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.12.0...v1.13.0)
+
+### 🚀 Enhancements
+
+- Upgrade typescript to v5 and other non-major deps ([b8f6f49](https://github.com/yisibell/trickling/commit/b8f6f49))
+
+### ❤️ Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.12.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.11.0...v1.12.0)

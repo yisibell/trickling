@@ -1,6 +1,6 @@
 {
   "name": "trickling",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "description": "A modern progress bar for web. Featuring realistic trickle animations to convince your users that something is happening!",
   "author": {
     "email": "yisiwings@163.com",
@@ -82,5 +82,4 @@
     "vue-router": "^4.2.4",
     "vue-tsc": "^1.8.13"
   }
-
 }
