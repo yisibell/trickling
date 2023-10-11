@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.13.1
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.13.0...v1.13.1)
+
+### 🩹 Fixes
+
+- TrickleIncrementalCurve types ([4591579](https://github.com/yisibell/trickling/commit/4591579))
+
+### ❤️ Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.13.0
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.12.0...v1.13.0)
