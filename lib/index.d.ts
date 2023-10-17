@@ -6,7 +6,7 @@ interface TrickleIncrementalCurveRecord {
 
 type TrickleIncrementalCurveFunc = (
   currentStatus: number
-) => TrickleIncrementalCurveRecord[]
+) => TrickleIncrementalCurveRecord[] | number
 
 interface TricklingOptions {
   speed?: number
@@ -40,7 +40,6 @@ interface TricklingOptions {
   trickleIncrementalCurve?:
     | TrickleIncrementalCurveFunc
     | TrickleIncrementalCurveRecord[]
-    | number
 }
 
 interface TricklingInstance {

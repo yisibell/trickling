@@ -140,8 +140,7 @@
 </template>
 
 <script lang="ts" setup>
-import 'prismjs'
-
+import prismjs from 'prismjs'
 import { onMounted, ref } from 'vue'
 import type { TricklingOptions } from '@/lib/interfaces/core'
 import { createTrickling } from '@/lib/main'
@@ -192,6 +191,7 @@ const handleDone = () => {
 }
 
 onMounted(() => {
+  prismjs.highlightAll()
   handleOptionsChange()
 })
 </script>
