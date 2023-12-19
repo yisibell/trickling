@@ -12,7 +12,8 @@
 
 A modern progress bar for web APP. Featuring realistic trickle animations to convince your users that something is happening!
 
-see [example](https://hongwenqing.com/trickling/) here.
+- See [example](https://hongwenqing.com/trickling/) here.
+- [Release Notes](./CHANGELOG.md).
 
 # Features
 
@@ -158,7 +159,3 @@ trickling.done(true);
 ```ts
 trickling.status
 ```
-
-# CHANGE LOG
-
-see [CHANGE LOG](./CHANGELOG.md).
