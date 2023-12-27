@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.14.0
+
+[compare changes](https://github.com/yisibell/trickling/compare/v1.13.1...v1.14.0)
+
+### 🚀 Enhancements
+
+- Upgrade all dev deps version to latest ([602e7f3](https://github.com/yisibell/trickling/commit/602e7f3))
+
+### 🏡 Chore
+
+- **example:** Update prismjs highlight init ([034994b](https://github.com/yisibell/trickling/commit/034994b))
+- Update readme ([0d8ed26](https://github.com/yisibell/trickling/commit/0d8ed26))
+
+### ❤️ Contributors
+
+- Wenqing <wenqing@kerrylan.com>
+
 ## v1.13.1
 
 [compare changes](https://github.com/yisibell/trickling/compare/v1.13.0...v1.13.1)
