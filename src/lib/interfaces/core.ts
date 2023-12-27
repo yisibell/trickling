@@ -5,7 +5,7 @@ export interface TrickleIncrementalCurveRecord {
 }
 
 export type TrickleIncrementalCurveFunc = (
-  currentStatus: number
+  currentStatus: number,
 ) => TrickleIncrementalCurveRecord[] | number
 
 export interface TricklingOptions {
@@ -60,7 +60,7 @@ export interface TricklingInstance {
   barPositionCSS: (
     barStatus: number,
     speed: number,
-    ease: string
+    ease: string,
   ) => Record<string, string>
   getPositioningCSS: () => 'translate3d' | 'translate' | 'margin'
   setPercent: (value: number | null) => void
