@@ -1,33 +1,25 @@
 <template>
-  <RouterView />
-
-  <div class="footer">
-    <span>
-      <a
-        href="https://github.com/yisibell/trickling/blob/main/CHANGELOG.md"
-        target="_blank"
-      >
-        CHANGE LOG
-      </a>
-    </span>
-    <span class="divider">|</span>
-    <span>
-      <a href="https://github.com/yisibell/trickling" target="_blank">Github</a>
-    </span>
+  <div>
+    <DemoHeader
+      logoText="Tr"
+      title="Trickling"
+      :title-link="LINKS.repo"
+      :right-links="rightLinks"
+    >
+    </DemoHeader>
+    <RouterView />
   </div>
 </template>
 
-<style lang="scss" scoped>
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 16px;
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import { LINKS } from '@/settings'
 
-  .divider {
-    display: inline-block;
-    color: var(--color--info);
-    padding: 0 14px;
-  }
-}
-</style>
+import type { DemoHeader } from 'demoify'
+
+const rightLinks = [
+  { href: LINKS.repo, title: 'Documentation' },
+  { href: LINKS.changelog, title: 'Changelog' },
+  { href: LINKS.repo, title: 'Github' },
+]
+</script>
